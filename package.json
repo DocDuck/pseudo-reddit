@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js"
   },
   "repository": "https://github.com/DocDuck/pseudo-reddit.git",
   "author": "DocDuck <alex.mitin.psmu@gmail.com>",
@@ -14,6 +14,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.3.2",
     "ts-loader": "^9.2.5",
     "typescript": "^4.3.5",
     "webpack": "^5.50.0",
