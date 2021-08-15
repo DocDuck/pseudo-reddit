@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js"
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "repository": "https://github.com/DocDuck/pseudo-reddit.git",
   "author": "DocDuck <alex.mitin.psmu@gmail.com>",
