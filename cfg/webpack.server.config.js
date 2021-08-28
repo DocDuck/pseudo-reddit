@@ -3,8 +3,6 @@ const path = require('path');
 /** CONSTANTS */
 const PORT = 3000;
 const NODE_ENV = process.env.NODE_ENV;
-const IS_DEV = NODE_ENV === 'development';
-const IS_PROD = NODE_ENV === 'production';
 
 module.exports = {
     target: 'node',
