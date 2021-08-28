@@ -1,4 +1,5 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 /** CONSTANTS */
 const PORT = 3000;
@@ -9,6 +10,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', 'ts', 'tsx', 'json']  
     },
+    externals: [nodeExternals()],
     mode: NODE_ENV ? NODE_ENV : 'development',
     entry: path.resolve(__dirname, '../src/server/server.js'),
     output: {
@@ -20,5 +22,8 @@ module.exports = {
             test: /\.[tj]sx?$/,
             use: ['ts-loader']
         }]
+    },
+    optimization: {
+        minimize: false
     }
 }
