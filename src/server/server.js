@@ -4,12 +4,14 @@ import Header from '../shared/Header';
 
 import template from './template';
 
-const app = express(); 
+const app = express();
+
+app.use('/static', express.static('./dist/client'));
 
 app.get('/', (req, res) => {
     res.send(template(ReactDOM.renderToString(Header())))
-})
+});
 
 app.listen(3000, () => {
     console.log('server started on localhost:3000')
-})
+});
