@@ -55,7 +55,7 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         }]
     },
-    devtool: false, //setupDevtool(),
+    devtool: setupDevtool(),
     plugins: IS_DEV ? [
         new CleanWebpackPlugin({
             cleanAfterEveryBuildPatterns: ['dist']
