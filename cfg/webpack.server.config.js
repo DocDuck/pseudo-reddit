@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 /** CONSTANTS */
  const NODE_ENV = process.env.NODE_ENV;
+ const GLOBAL_CSS_REGEXP = /\.global\.css/;
 
 module.exports = {
     mode: NODE_ENV ? NODE_ENV : 'development',
@@ -13,13 +14,32 @@ module.exports = {
         filename: 'server.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx', 'ts', 'tsx', 'json']  
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']  
     },
     module: {
-        rules: [{
-            test: /\.[tj]sx?$/,
-            use: ['ts-loader']
-        }]
+        rules: [
+            {
+                test: /\.[tj]sx?$/,
+                use: ['ts-loader']
+            }, {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]--[hash:base64:5]'
+    ,                            }
+                        }
+                    }
+                ],
+                exclude: GLOBAL_CSS_REGEXP  
+            }, {
+                test: GLOBAL_CSS_REGEXP,
+                use: ['css-loader']
+            }]
     },
     externals: [nodeExternals()],
     optimization: {
